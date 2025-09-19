@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #111;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dock-container {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.dock-item {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    opacity: 0.7;
+    filter: grayscale(20%);
+}
+
+.dock-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dock-item:hover,
+.dock-item:hover ~ .dock-item[data-index="0"],
+.dock-item:hover ~ .dock-item[data-index="1"],
+.dock-item:hover ~ .dock-item[data-index="2"],
+.dock-item:hover ~ .dock-item[data-index="3"],
+.dock-item:hover ~ .dock-item[data-index="4"] {
+}
+
+.dock-item[data-index="0"]:hover,
+.dock-item[data-index="1"]:hover,
+.dock-item[data-index="2"]:hover,
+.dock-item[data-index="3"]:hover,
+.dock-item[data-index="4"]:hover {
+    transform: scale(1.4);
+    opacity: 1;
+    filter: grayscale(0);
+    z-index: 10;
+}
+
+.dock-item[data-index="0"]:hover ~ .dock-item[data-index="1"],
+.dock-item[data-index="1"]:hover ~ .dock-item[data-index="0"],
+.dock-item[data-index="1"]:hover ~ .dock-item[data-index="2"],
+.dock-item[data-index="2"]:hover ~ .dock-item[data-index="1"],
+.dock-item[data-index="2"]:hover ~ .dock-item[data-index="3"],
+.dock-item[data-index="3"]:hover ~ .dock-item[data-index="2"],
+.dock-item[data-index="3"]:hover ~ .dock-item[data-index="4"],
+.dock-item[data-index="4"]:hover ~ .dock-item[data-index="3"] {
+    transform: scale(1.2);
+    opacity: 0.9;
+    filter: grayscale(10%);
+}
+
+.dock-item[data-index="0"]:hover ~ .dock-item[data-index="2"],
+.dock-item[data-index="2"]:hover ~ .dock-item[data-index="0"],
+.dock-item[data-index="1"]:hover ~ .dock-item[data-index="3"],
+.dock-item[data-index="3"]:hover ~ .dock-item[data-index="1"],
+.dock-item[data-index="2"]:hover ~ .dock-item[data-index="4"],
+.dock-item[data-index="4"]:hover ~ .dock-item[data-index="2"] {
+    transform: scale(1.1);
+    opacity: 0.8;
+    filter: grayscale(15%);
+}
+
+.dock-item[data-index="0"]:hover ~ .dock-item[data-index="2"] {
+    transform: scale(1.1);
+    opacity: 0.8;
+    filter: grayscale(15%);
+}
+
+.dock-item[data-index="4"]:hover ~ .dock-item[data-index="2"] {
+    transform: scale(1.1);
+    opacity: 0.8;
+    filter: grayscale(15%);
+}
+
+.dock-item {
+    position: relative;
+    z-index: 1;
+}
